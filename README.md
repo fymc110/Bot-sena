@@ -1,0 +1,2 @@
+# Bot-sena
+Hanya bot
