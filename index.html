@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Bot SENA</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      padding: 20px;
+    }
+    .chat-container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .messages {
+      height: 400px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      background: #fafafa;
+    }
+    .message {
+      margin: 8px 0;
+    }
+    .user {
+      text-align: right;
+      color: blue;
+    }
+    .bot {
+      text-align: left;
+      color: green;
+    }
+    input[type="text"] {
+      width: 75%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      background: #28a745;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #218838;
+    }
+  </style>
+</head>
+<body>
+
+<div class="chat-container">
+  <h2>Chat Bot SENA</h2>
+  <div class="messages" id="chat-box"></div>
+  <input type="text" id="user-input" placeholder="Tulis pesan kamu...">
+  <button onclick="sendMessage()">Kirim</button>
+</div>
+
+<script>
+  const responses = [
+    { keywords: ["halo", "hai", "hello"], response: "Halo! Ada yang bisa saya bantu?" },
+    { keywords: ["nama kamu siapa", "siapa namamu"], response: "Saya adalah bot buatan lokal." },
+    { keywords: ["apa kabar", "gimana kabarnya"], response: "Saya baik, terima kasih! Kamu sendiri gimana?" },
+    { keywords: ["terima kasih", "makasih"], response: "Sama-sama! 😊" },
+    { keywords: ["selamat tinggal", "dadah", "bye"], response: "Sampai jumpa! Semoga harimu menyenangkan." }
+    { keywords: ["pertanyaan", "nanya", "mau nanya"], response: "nanya apa tuu 😆","bolehhh 😘"},
+  ];
+
+  function findResponse(message) {
+    message = message.toLowerCase();
+    for (let pair of responses) {
+      for (let keyword of pair.keywords) {
+        if (message.includes(keyword)) {
+          return pair.response;
+        }
+      }
+    }
+    return "Maaf, saya tidak mengerti maksudmu.";
+  }
+
+  function sendMessage() {
+    const inputField = document.getElementById('user-input');
+    const chatBox = document.getElementById('chat-box');
+    const userMessage = inputField.value.trim();
+    if (!userMessage) return;
+
+    // Tampilkan pesan pengguna
+    const userDiv = document.createElement('div');
+    userDiv.className = 'message user';
+    userDiv.textContent = userMessage;
+    chatBox.appendChild(userDiv);
+
+    // Cari respon bot
+    const botReply = findResponse(userMessage);
+
+    const botDiv = document.createElement('div');
+    botDiv.className = 'message bot';
+    botDiv.textContent = botReply;
+    chatBox.appendChild(botDiv);
+
+    inputField.value = '';
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
+</script>
+
+</body>
+</html>
