@@ -132,3 +132,113 @@
 
 </body>
 </html>
+
+<!doctype html>
+
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rekomendasi Anime — Simpel</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#ff5c8a;--muted:#94a3b8;--glass: rgba(255,255,255,0.03)}
+    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#e6eef8;background:linear-gradient(180deg,#071023 0%, #0b1b2b 100%);}
+    .wrap{max-width:1000px;margin:36px auto;padding:20px}
+    h1{margin:0;font-size:22px}
+    p.lead{margin:4px 0 18px;color:var(--muted)}
+    .controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+    .btn{background:var(--glass);border:1px solid rgba(255,255,255,0.04);padding:8px 12px;border-radius:10px;color:var(--muted);cursor:pointer}
+    .btn.active{border-color:var(--accent);color:#fff;box-shadow:0 6px 18px rgba(255,92,138,0.08)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;border:1px solid rgba(255,255,255,0.03);overflow:hidden;cursor:pointer;display:flex;flex-direction:column}
+    .card img{width:100%;height:150px;object-fit:cover}
+    .content{padding:12px}
+    .title{font-weight:700;margin:0 0 6px}
+    .meta{font-size:13px;color:var(--muted);margin-bottom:8px}
+    .desc{font-size:14px;color:#d6e7ff}
+    footer{margin-top:18px;color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Rekomendasi Anime — Simpel</h1>
+    <p class="lead">Klik kategori untuk memfilter. Klik kartu untuk info singkat.</p><div class="controls" id="controls">
+  <button class="btn active" data-cat="all">Semua</button>
+  <button class="btn" data-cat="romance">Romantis</button>
+  <button class="btn" data-cat="action">Aksi</button>
+  <button class="btn" data-cat="psych">Psikologis</button>
+  <button class="btn" data-cat="comedy">Komedi</button>
+  <button class="btn" data-cat="isekai">Isekai</button>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<footer>Butuh rekomendasi lebih spesifik? Ketik genre favoritmu.</footer>
+
+  </div>  <script>
+    const data = [
+      {title: 'Your Lie in April', cat: 'romance', note: 'Romantis & sedih — cinta + musik.', img: 'https://i.imgur.com/0y8Ftya.jpg'},
+      {title: 'Clannad: After Story', cat: 'romance', note: 'Drama keluarga, mengharukan.', img: 'https://i.imgur.com/0TTlM7J.jpg'},
+      {title: 'Toradora!', cat: 'romance', note: 'Romansa remaja penuh tawa & haru.', img: 'https://i.imgur.com/s6A1bFO.jpg'},
+      {title: 'Attack on Titan', cat: 'action', note: 'Aksi intens melawan raksasa.', img: 'https://i.imgur.com/hYgWjWY.jpg'},
+      {title: 'Demon Slayer', cat: 'action', note: 'Visual memukau & aksi seru.', img: 'https://i.imgur.com/xZcEw4p.jpg'},
+      {title: 'One Punch Man', cat: 'action', note: 'Pahlawan terkuat & komedi.', img: 'https://i.imgur.com/WuK1Tgj.jpg'},
+      {title: 'Death Note', cat: 'psych', note: 'Adu strategi & thriller.', img: 'https://i.imgur.com/CzEu5ob.jpg'},
+      {title: 'Steins;Gate', cat: 'psych', note: 'Sci‑fi & perjalanan waktu.', img: 'https://i.imgur.com/cURxzfo.jpg'},
+      {title: 'Monster', cat: 'psych', note: 'Drama kriminal & psikologis.', img: 'https://i.imgur.com/E7MXYNY.jpg'},
+      {title: 'KonoSuba', cat: 'comedy', note: 'Komedi isekai absurd.', img: 'https://i.imgur.com/bGHbGYe.jpg'},
+      {title: 'Gintama', cat: 'comedy', note: 'Parodi anime & aksi kocak.', img: 'https://i.imgur.com/0Bo2nVJ.jpg'},
+      {title: 'Nichijou', cat: 'comedy', note: 'Humor absurd kehidupan sehari‑hari.', img: 'https://i.imgur.com/wJKwB6E.jpg'},
+      {title: 'Re:Zero', cat: 'isekai', note: 'Isekai gelap — hidup ulang setelah mati.', img: 'https://i.imgur.com/mOKlXfG.jpg'},
+      {title: 'That Time I Got Reincarnated as a Slime', cat: 'isekai', note: 'Isekai ringan & seru.', img: 'https://i.imgur.com/ctXvFDE.jpg'},
+      {title: 'No Game No Life', cat: 'isekai', note: 'Dunia game penuh strategi.', img: 'https://i.imgur.com/6V5sbTE.jpg'},
+      {title: 'Your Lie in April', cat: 'romance', note: 'Romantis & sedih — cinta + musik.', img: 'https://i.imgur.com/0y8Ftya.jpg'},
+      {title: 'Fruits Basket', cat: 'romance', note: 'Kehangatan keluarga & romansa.', img: 'https://i.imgur.com/UPbqwaZ.jpg'},
+      {title: 'Anohana: The Flower We Saw That Day', cat: 'romance', note: 'Drama pertemanan & kehilangan.', img: 'https://i.imgur.com/Tw8QwWg.jpg'},
+      {title: 'Fullmetal Alchemist: Brotherhood', cat: 'action', note: 'Petualangan epik dua bersaudara.', img: 'https://i.imgur.com/n0h1Utn.jpg'},
+      {title: 'Black Clover', cat: 'action', note: 'Sihir, pertarungan, dan persahabatan.', img: 'https://i.imgur.com/YlV6b4Z.jpg'},
+      {title: 'My Hero Academia', cat: 'action', note: 'Sekolah pahlawan super.', img: 'https://i.imgur.com/EMNfZmA.jpg'},
+      {title: 'Psycho-Pass', cat: 'psych', note: 'Masa depan dengan sistem penilai kriminal.', img: 'https://i.imgur.com/IHkFymH.jpg'},
+      {title: 'Paranoia Agent', cat: 'psych', note: 'Misteri psikologis surreal.', img: 'https://i.imgur.com/LgDN1rC.jpg'},
+      {title: 'Texhnolyze', cat: 'psych', note: 'Cyberpunk gelap dan filosofis.', img: 'https://i.imgur.com/FfSniNh.jpg'},
+      {title: 'Saiki Kusuo no Psi-nan', cat: 'comedy', note: 'Komedi karakter dengan kekuatan super.', img: 'https://i.imgur.com/JItY8Lf.jpg'},
+      {title: 'Daily Lives of High School Boys', cat: 'comedy', note: 'Kehidupan kocak remaja sekolah.', img: 'https://i.imgur.com/ZmLQYq6.jpg'},
+      {title: 'Asobi Asobase', cat: 'comedy', note: 'Kelompok siswi dengan humor absurd.', img: 'https://i.imgur.com/nk16L7n.jpg'},
+      {title: 'The Rising of the Shield Hero', cat: 'isekai', note: 'Pahlawan tameng di dunia fantasi.', img: 'https://i.imgur.com/0M3R5gP.jpg'},
+      {title: 'Cautious Hero', cat: 'isekai', note: 'Pahlawan super hati-hati.', img: 'https://i.imgur.com/PGN2cWZ.jpg'},
+      {title: 'Grimgar: Ashes and Illusions', cat: 'isekai', note: 'Fantasi realistis penuh perjuangan.', img: 'https://i.imgur.com/xJ3p17T.jpg'}
+    ];
+
+    const grid = document.getElementById('grid');
+    const controls = document.getElementById('controls');
+
+    function render(filter='all'){
+      grid.innerHTML = '';
+      const list = data.filter(d => filter==='all' ? true : d.cat===filter);
+      list.forEach(d => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `<img src="${d.img}" alt="${d.title}" />
+                          <div class="content">
+                            <h3 class="title">${d.title}</h3>
+                            <div class="meta">${d.cat.toUpperCase()}</div>
+                            <div class="desc">${d.note}</div>
+                          </div>`;
+        card.addEventListener('click', () => {
+          alert(`${d.title}\n\nKategori: ${d.cat}\n\n${d.note}`);
+        });
+        grid.appendChild(card);
+      });
+    }
+
+    controls.addEventListener('click', e =>{
+      if(!e.target.matches('.btn')) return;
+      const cat = e.target.dataset.cat;
+      [...controls.querySelectorAll('.btn')].forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      render(cat || 'all');
+    });
+
+    render('all');
+  </script></body>
+</html>
