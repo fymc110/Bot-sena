@@ -136,6 +136,102 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pencari Anime</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      color: #333;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 300px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      width: 300px;
+    }
+    li {
+      background: white;
+      margin-bottom: 8px;
+      padding: 10px;
+      border-radius: 6px;
+      box-shadow: 0 0 6px #ccc;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    li:hover {
+      background: #4a90e2;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pencari Anime</h1>
+  <input type="text" id="search-input" placeholder="Ketik kata kunci anime..." autocomplete="off" />
+  <ul id="results"></ul>
+
+  <script>
+    const animeList = [
+      "Mushoku Tensei: Isekai Ittara Honki Dasu",
+      "Attack on Titan",
+      "Naruto",
+      "One Piece",
+      "Demon Slayer: Kimetsu no Yaiba",
+      "My Hero Academia",
+      "Mushoku no Eiyuu",
+      "Tokyo Revengers",
+      "Jujutsu Kaisen",
+      "Death Note",
+      "Fullmetal Alchemist",
+      "Sword Art Online",
+      "Hunter x Hunter",
+      "Bleach",
+      "Fairy Tail"
+    ];
+
+    const input = document.getElementById('search-input');
+    const results = document.getElementById('results');
+
+    input.addEventListener('input', () => {
+      const query = input.value.toLowerCase().trim();
+      results.innerHTML = '';
+
+      if (query === '') return;
+
+      const filtered = animeList.filter(name => name.toLowerCase().includes(query));
+
+      if (filtered.length === 0) {
+        results.innerHTML = '<li>Tidak ada hasil ditemukan</li>';
+        return;
+      }
+
+      filtered.forEach(name => {
+        const li = document.createElement('li');
+        li.textContent = name;
+        results.appendChild(li);
+      });
+    });
+  </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
   <meta charset="UTF-8">
   <title>Home — Menu Utama</title>
   <style>
@@ -228,86 +324,126 @@
 
   </div>  <script>
     const data = [
-  {title: 'Your Life in April', cat: 'romance', note: 'Romantis & sedih — cinta + musik.', img: 'https://bili.im/9EwfbE2'},
-  {title: 'Clannad: After Story', cat: 'romance', note: 'Drama keluarga, mengharukan.', img: 'https://youtube.com/playlist?list=PLUarc9_KBKUUMl4gpmtw5McTl87afpUSX&si=_g7Nca5pGcuAVRNZ'},
-  {title: 'Toradora!', cat: 'romance', note: 'Romansa remaja penuh tawa & haru.', img: 'https://youtube.com/playlist?list=PLpaH-euMAifnQw3Yc4M-5AuWQepdxIdCE&si=MkWsqFXrowZlesnt'},
-  {title: 'Attack on Titan', cat: 'action', note: 'Aksi intens melawan raksasa.', img: 'https://bili.im/CWwxLDC'},
-  {title: 'Demon Slayer', cat: 'action', note: 'Visual memukau & aksi seru.', img: 'https://bili.im/DFCMGzB'},
-  {title: 'One Punch Man', cat: 'action', note: 'Pahlawan terkuat & komedi.', img: 'https://bili.im/P3M9y72'},
-  {title: 'Death Note', cat: 'psych', note: 'Adu strategi & thriller.', img: 'https://bili.im/1PKO9pi'},
-  {title: 'Steins;Gate', cat: 'psych', note: 'Sci-fi & perjalanan waktu.', img: 'https://bili.im/sJyKKDf'},
-  {title: 'Monster', cat: 'psych', note: 'Drama kriminal & psikologis.', img: 'https:https://bili.im/cESfhGP'},
-  {title: 'KonoSuba', cat: 'comedy', note: 'Komedi isekai absurd.', img: 'https://youtu.be/jEKCng9094A?si=FKSxXAxlkACkz_Yq'},
-  {title: 'Gintama', cat: 'comedy', note: 'Parodi anime & aksi kocak.', img: 'https://anime-indo.lol/gintama-episode-001-002/'},
-  {title: 'Nichijou', cat: 'comedy', note: 'Humor absurd kehidupan sehari-hari.', img: 'https:https://bili.im/DKjzlWB'},
-  {title: 'Re:Zero', cat: 'isekai', note: 'Isekai gelap — hidup ulang setelah mati.', img: 'https://youtube.com/playlist?list=PLPanbgyToztbLcypmWAFGf739Alfxk3qS&si=I7UOAWe2t_4stSNd'},
-  {title: 'That Time I Got Reincarnated as a Slime', cat: 'isekai', note: 'Isekai ringan & seru.', img: 'https://youtu.be/Lys5vkiv0RA?si=C2H9BCYZWhoNPsBO'},
-  {title: 'No Game No Life', cat: 'isekai', note: 'Dunia game penuh strategi.', img: 'https://bili.im/UL15RnY'},
-  {title: 'Fruits Basket', cat: 'romance', note: 'Kehangatan keluarga & romansa.', img: 'https:https://bili.im/z0okRaM'},
-  {title: 'Anohana: The Flower We Saw That Day', cat: 'romance', note: 'Drama pertemanan & kehilangan.', img: 'https://bili.im/eTrIDIX'},
-  {title: 'Fullmetal Alchemist: Brotherhood', cat: 'action', note: 'Petualangan epik dua bersaudara.', img: 'https://bili.im/ww7rQCl'},
-  {title: 'Black Clover', cat: 'action', note: 'Sihir, pertarungan, dan persahabatan.', img: 'https:https://bili.im/qVJ1bWY'},
-  {title: 'My Hero Academia', cat: 'action', note: 'Sekolah pahlawan super.', img: 'https://bili.im/RJhWrw3'},
-  {title: 'Psycho-Pass', cat: 'psych', note: 'Masa depan dengan sistem penilai kriminal.', img: 'https:https://bili.im/Bwg4jWG'},
-  {title: 'Paranoia Agent', cat: 'psych', note: 'Misteri psikologis surreal.', img: 'https://bili.im/LRbs7rc'},
-  {title: 'Texhnolyze', cat: 'psych', note: 'Cyberpunk gelap dan filosofis.', img: 'https://bili.im/qmD5Jj3'},
-  {title: 'Saiki Kusuo no Psi-nan', cat: 'comedy', note: 'Komedi karakter dengan kekuatan super.', img: 'https://bili.im/fBk6ls2'},
-  {title: 'Daily Lives of High School Boys', cat: 'comedy', note: 'Kehidupan kocak remaja sekolah.', img: 'https://bili.im/U2889bp'},
-  {title: 'Asobi Asobase', cat: 'comedy', note: 'Kelompok siswi dengan humor absurd.', img: 'https://youtube.com/playlist?list=PLPanbgyTozta0JFEF7TxFZrEQNdiW6EeU&si=EJ-pcO15GQadIYab'},
-  {title: 'The Rising of the Shield Hero', cat: 'isekai', note: 'Pahlawan tameng di dunia fantasi.', img: 'https://bili.im/Dkaz4LY'},
-  {title: 'Cautious Hero', cat: 'isekai', note: 'Pahlawan super hati-hati.', img: 'https://bili.im/Xr9jGuU'},
-  {title: 'Grimgar: Ashes and Illusions', cat: 'isekai', note: 'Fantasi realistis penuh perjuangan.', img: 'https://bili.im/Lft4IuT'},
-  {title: 'Vivy: Fluorite Eye’s Song', cat: 'action', note: 'Sci-fi + musik + drama emosional.', img: ''},
-  {title: 'Erased (Boku dake ga Inai Machi)', cat: 'psych', note: 'Thriller misteri + perjalanan waktu.', img: ''},
-  {title: 'Made in Abyss', cat: 'action', note: 'Petualangan fantasy yang indah tapi kelam.', img: ''},
-  {title: 'The Garden of Words', cat: 'romance', note: 'Romantis singkat tapi visualnya luar biasa.', img: ''},
-  {title: 'Barakamon', cat: 'comedy', note: 'Slice of life tentang seni kaligrafi dan kehidupan di desa.', img: ''},
-  {title: '91 Days', cat: 'action', note: 'Drama kriminal era mafia.', img: ''},
-  {title: 'March Comes in Like a Lion', cat: 'psych', note: 'Drama emosional + shogi.', img: ''},
-  {title: 'Ergo Proxy', cat: 'psych', note: 'Sci-fi psikologis dan filosofi mendalam.', img: ''},
-  {title: 'Akame ga Kill!', cat: 'action', note: 'Action dengan twist emosional.', img: ''},
-  {title: 'Planetes', cat: 'psych', note: 'Drama realistis tentang kehidupan pekerja di luar angkasa.', img: ''},
-  {title: 'The Devil is a Part-Timer! (Hataraku Maou-sama!)', cat: 'comedy', note: 'Isekai terbalik — raja iblis kerja di restoran cepat saji.', img: ''},
-  {title: 'Angel Beats!', cat: 'romance', note: 'Campuran komedi, aksi, dan drama emosional di dunia afterlife.', img: ''},
-  {title: 'Bakuman', cat: 'comedy', note: 'Dua remaja berjuang menjadi mangaka profesional.', img: ''},
-  {title: 'Orange', cat: 'romance', note: 'Drama romansa dan surat dari masa depan.', img: ''},
-  {title: 'The Ancient Magus’ Bride', cat: 'romance', note: 'Fantasy romantis dengan sentuhan gelap.', img: ''},
-  {title: 'Samurai Champloo', cat: 'action', note: 'Samurai + hip hop, petualangan penuh gaya.', img: ''},
-  {title: 'Great Teacher Onizuka (GTO)', cat: 'comedy', note: 'Komedinya kocak, pesannya dalam.', img: ''},
-  {title: 'Parasyte: The Maxim', cat: 'action', note: 'Thriller horor sci-fi tentang parasit misterius.', img: ''},
-  {title: 'Kimi ni Todoke', cat: 'romance', note: 'Romansa manis antara gadis pemalu dan cowok populer.', img: ''},
-  {title: 'Charlotte', cat: 'romance', note: 'Remaja dengan kekuatan spesial + drama emosional.', img: ''},
-  {title: 'Spice and Wolf', cat: 'romance', note: 'Petualangan pedagang dan dewi serigala yang bijak.', img: ''},
-  {title: 'Hyouka', cat: 'psych', note: 'Misteri ringan dengan nuansa slice of life.', img: ''},
-  {title: 'Toriko', cat: 'action', note: 'Petualangan kuliner penuh aksi dan monster unik.', img: ''},
-  {title: 'Baccano!', cat: 'action', note: 'Aksi cepat penuh karakter eksentrik di era 1930-an.', img: ''},
-  {title: 'Arakawa Under the Bridge', cat: 'comedy', note: 'Kehidupan absurd di bawah jembatan bersama orang-orang unik.', img: ''},
-  {title: 'Terror in Resonance (Zankyou no Terror)', cat: 'psych', note: 'Thriller misteri dengan dua remaja jenius sebagai teroris.', img: ''},
-  {title: 'Drifters', cat: 'action', note: 'Pahlawan sejarah dilempar ke dunia fantasi untuk berperang.', img: ''},
-  {title: 'The World God Only Knows', cat: 'comedy', note: 'Gamer dating sim harus menaklukkan hati cewek di dunia nyata.', img: ''},
-  {title: 'Yuri!!! on Ice', cat: 'romance', note: 'Drama olahraga figure skating dengan romansa emosional.', img: ''},
-  {title: 'Beastars', cat: 'psych', note: 'Drama sosial di dunia hewan antropomorfik.', img: ''},
-  {title: 'Noragami', cat: 'action', note: 'Dewa kecil berjuang mencari pengikut sambil membasmi roh jahat.', img: ''},
-  {title: 'Nana', cat: 'romance', note: 'Kisah dua wanita bernama Nana, penuh cinta dan drama.', img: ''},
-  {title: 'Kekkai Sensen (Blood Blockade Battlefront)', cat: 'action', note: 'Pertarungan supernatural di kota penuh makhluk misterius.', img: ''},
-  {title: 'School Rumble', cat: 'comedy', note: 'Kisah cinta segitiga yang kocak dan salah paham terus-menerus.', img: ''},
-  {title: 'A Silent Voice (Koe no Katachi)', cat: 'romance', note: 'Drama emosional tentang penebusan dan penerimaan.', img: ''},
-  {title: 'Zombieland Saga', cat: 'comedy', note: 'Grup idola unik yang terdiri dari zombie.', img: ''},
-  {title: 'Elfen Lied', cat: 'action', note: 'Gabungan horor, drama, dan kekuatan mematikan.', img: ''},
-  {title: 'Paprika', cat: 'psych', note: 'Film sci-fi psikologis tentang mimpi dan kenyataan.', img: ''},
-  {title: 'Ouran High School Host Club', cat: 'comedy', note: 'Komedi romantis di klub host sekolah elit.', img: ''},
-  {title: 'Hanayamata', cat: 'romance', note: 'Gadis-gadis SMA membentuk klub tari yosakoi.', img: ''},
-  {title: 'Sakamoto Days', cat: 'action', note: 'Mantan pembunuh bayaran jadi bapak rumahan & lincah melindungi keluarga.', img: ''},
-  {title: 'Solo Leveling Season 2', cat: 'action', note: 'Sung Jinwoo kembali sebagai Shadow Monarch, pertarungan lebih intens.', img: ''},
-  {title: 'Dandadan Season 2', cat: 'action', note: 'Arc Evil Eye: horror, komedi, dan romance kocak & kreatif.', img: ''},
-  {title: 'Gachiakuta', cat: 'action', note: 'Kota terapung & abis monster di bawah: gelap, stylish, intense.', img: ''},
-  {title: 'The Beginning After the End', cat: 'isekai', note: 'Raja bereinkarnasi, jalan sihir & petualangan epik.', img: ''},
-  {title: 'Devil May Cry (2025)', cat: 'action', note: 'Dante berburu iblis dalam urban fantasy Netflix.', img: ''},
-  {title: 'The Shy Hero and the Assassin Princesses', cat: 'comedy', note: 'Hero pemalu & pengawal princesss… yang memplot membunuhnya!', img: ''},
-  {title: 'Momentary Lily', cat: 'action', note: 'Gadis dan teman-teman bertahan melawan robotinvasor sambil masak.', img: ''},
-  {title: 'Yaiba (2025 Remake)', cat: 'action', note: 'Remake klasik shin-samurai Yaiba, full petualangan & pedang iblis.', img: ''},
-  {title: 'Chainsaw Man: Reze Arc (Movie)', cat: 'action', note: 'Film lanjutkan kisah Reze arc dari Chainsaw Man.', img: ''},
-  {title: 'CITY the Animation', cat: 'psych', note: 'Debut nonsekuel Kyoto Animation setelah bertahun-tahun.', img: ''}
+      {title: 'Your Life in April', cat: 'romance', note: 'Romantis & sedih — cinta + musik.', img: 'https://bili.im/9EwfbE2'},
+      {title: 'Clannad: After Story', cat: 'romance', note: 'Drama keluarga, mengharukan.', img: 'https://youtube.com/playlist?list=PLUarc9_KBKUUMl4gpmtw5McTl87afpUSX&si=_g7Nca5pGcuAVRNZ'},
+      {title: 'Toradora!', cat: 'romance', note: 'Romansa remaja penuh tawa & haru.', img: 'https://youtube.com/playlist?list=PLpaH-euMAifnQw3Yc4M-5AuWQepdxIdCE&si=MkWsqFXrowZlesnt'},
+      {title: 'Attack on Titan', cat: 'action', note: 'Aksi intens melawan raksasa.', img: 'https://bili.im/CWwxLDC'},
+      {title: 'Demon Slayer', cat: 'action', note: 'Visual memukau & aksi seru.', img: 'https://bili.im/DFCMGzB'},
+      {title: 'One Punch Man', cat: 'action', note: 'Pahlawan terkuat & komedi.', img: 'https://bili.im/P3M9y72'},
+      {title: 'Death Note', cat: 'psych', note: 'Adu strategi & thriller.', img: 'https://bili.im/1PKO9pi'},
+      {title: 'Steins;Gate', cat: 'psych', note: 'Sci‑fi & perjalanan waktu.', img: 'https://bili.im/sJyKKDf'},
+      {title: 'Monster', cat: 'psych', note: 'Drama kriminal & psikologis.', img: 'https:https://bili.im/cESfhGP'},
+      {title: 'KonoSuba', cat: 'comedy', note: 'Komedi isekai absurd.', img: 'https://youtu.be/jEKCng9094A?si=FKSxXAxlkACkz_Yq'},
+      {title: 'Gintama', cat: 'comedy', note: 'Parodi anime & aksi kocak.', img: 'https://anime-indo.lol/gintama-episode-001-002/'},
+      {title: 'Nichijou', cat: 'comedy', note: 'Humor absurd kehidupan sehari‑hari.', img: 'https:https://bili.im/DKjzlWB'},
+      {title: 'Re:Zero', cat: 'isekai', note: 'Isekai gelap — hidup ulang setelah mati.', img: 'https://youtube.com/playlist?list=PLPanbgyToztbLcypmWAFGf739Alfxk3qS&si=I7UOAWe2t_4stSNd'},
+      {title: 'That Time I Got Reincarnated as a Slime', cat: 'isekai', note: 'Isekai ringan & seru.', img: 'https://youtu.be/Lys5vkiv0RA?si=C2H9BCYZWhoNPsBO'},
+      {title: 'No Game No Life', cat: 'isekai', note: 'Dunia game penuh strategi.', img: 'https://bili.im/UL15RnY'},
+      {title: 'Fruits Basket', cat: 'romance', note: 'Kehangatan keluarga & romansa.', img: 'https:https://bili.im/z0okRaM'},
+      {title: 'Anohana: The Flower We Saw That Day', cat: 'romance', note: 'Drama pertemanan & kehilangan.', img: 'https://bili.im/eTrIDIX'},
+      {title: 'Fullmetal Alchemist: Brotherhood', cat: 'action', note: 'Petualangan epik dua bersaudara.', img: 'https://bili.im/ww7rQCl'},
+      {title: 'Black Clover', cat: 'action', note: 'Sihir, pertarungan, dan persahabatan.', img: 'https:https://bili.im/qVJ1bWY'},
+      {title: 'My Hero Academia', cat: 'action', note: 'Sekolah pahlawan super.', img: 'https://bili.im/RJhWrw3'},
+      {title: 'Psycho-Pass', cat: 'psych', note: 'Masa depan dengan sistem penilai kriminal.', img: 'https:https://bili.im/Bwg4jWG'},
+      {title: 'Paranoia Agent', cat: 'psych', note: 'Misteri psikologis surreal.', img: 'https://bili.im/LRbs7rc'},
+      {title: 'Texhnolyze', cat: 'psych', note: 'Cyberpunk gelap dan filosofis.', img: 'https://bili.im/qmD5Jj3'},
+      {title: 'Saiki Kusuo no Psi-nan', cat: 'comedy', note: 'Komedi karakter dengan kekuatan super.', img: 'https://bili.im/fBk6ls2'},
+      {title: 'Daily Lives of High School Boys', cat: 'comedy', note: 'Kehidupan kocak remaja sekolah.', img: 'https://bili.im/U2889bp'},
+      {title: 'Asobi Asobase', cat: 'comedy', note: 'Kelompok siswi dengan humor absurd.', img: 'https://youtube.com/playlist?list=PLPanbgyTozta0JFEF7TxFZrEQNdiW6EeU&si=EJ-pcO15GQadIYab'},
+      {title: 'The Rising of the Shield Hero', cat: 'isekai', note: 'Pahlawan tameng di dunia fantasi.', img: 'https://bili.im/Dkaz4LY'},
+      {title: 'Cautious Hero', cat: 'isekai', note: 'Pahlawan super hati-hati.', img: 'https://bili.im/Xr9jGuU'},
+      {title: 'Grimgar: Ashes and Illusions', cat: 'isekai', note: 'Fantasi realistis penuh perjuangan.', img: 'https://bili.im/Lft4IuT'},
+      {title: 'Vivy: Fluorite Eye’s Song', cat: 'action', note: 'Sci-fi + musik + drama emosional.', img: 'https://cdn.myanimelist.net/images/anime/1805/111336.jpg'},
+      {title: 'Erased (Boku dake ga Inai Machi)', cat: 'psych', note: 'Thriller misteri + perjalanan waktu.', img: 'https://cdn.myanimelist.net/images/anime/10/77957.jpg'},
+      {title: 'Made in Abyss', cat: 'action', note: 'Petualangan fantasy yang indah tapi kelam.', img: 'https://cdn.myanimelist.net/images/anime/6/86733.jpg'},
+      {title: 'The Garden of Words', cat: 'romance', note: 'Romantis singkat tapi visualnya luar biasa.', img: 'https://cdn.myanimelist.net/images/anime/4/49777.jpg'},
+      {title: 'Barakamon', cat: 'comedy', note: 'Slice of life tentang seni kaligrafi dan kehidupan di desa.', img: 'https://cdn.myanimelist.net/images/anime/3/64251.jpg'},
+      {title: '91 Days', cat: 'action', note: 'Drama kriminal era mafia.', img: 'https://cdn.myanimelist.net/images/anime/9/80688.jpg'},
+      {title: 'March Comes in Like a Lion', cat: 'psych', note: 'Drama emosional + shogi.', img: 'https://cdn.myanimelist.net/images/anime/3/82898.jpg'},
+      {title: 'Ergo Proxy', cat: 'psych', note: 'Sci-fi psikologis dan filosofi mendalam.', img: 'https://cdn.myanimelist.net/images/anime/10/13341.jpg'},
+      {title: 'Akame ga Kill!', cat: 'action', note: 'Action dengan twist emosional.', img: 'https://cdn.myanimelist.net/images/anime/1429/95946.jpg'},
+      {title: 'Planetes', cat: 'psych', note: 'Drama realistis tentang kehidupan pekerja di luar angkasa.', img: 'https://cdn.myanimelist.net/images/anime/3/80187.jpg'},
+      {title: 'The Devil is a Part-Timer! (Hataraku Maou-sama!)', cat: 'comedy', note: 'Isekai terbalik — raja iblis kerja di restoran cepat saji.', img: 'https://cdn.myanimelist.net/images/anime/5/50331.jpg'},
+      {title: 'Angel Beats!', cat: 'romance', note: 'Campuran komedi, aksi, dan drama emosional di dunia afterlife.', img: 'https://cdn.myanimelist.net/images/anime/10/22062.jpg'},
+      {title: 'Bakuman', cat: 'comedy', note: 'Dua remaja berjuang menjadi mangaka profesional.', img: 'https://cdn.myanimelist.net/images/anime/5/73199.jpg'},
+      {title: 'Orange', cat: 'romance', note: 'Drama romansa dan surat dari masa depan.', img: 'https://cdn.myanimelist.net/images/anime/4/80110.jpg'},
+      {title: 'The Ancient Magus’ Bride', cat: 'romance', note: 'Fantasy romantis dengan sentuhan gelap.', img: 'https://cdn.myanimelist.net/images/anime/3/88470.jpg'},
+      {title: 'Samurai Champloo', cat: 'action', note: 'Samurai + hip hop, petualangan penuh gaya.', img: 'https://cdn.myanimelist.net/images/anime/11/29135.jpg'},
+      {title: 'Great Teacher Onizuka (GTO)', cat: 'comedy', note: 'Komedinya kocak, pesannya dalam.', img: 'https://cdn.myanimelist.net/images/anime/13/11460.jpg'},
+      {title: 'Parasyte: The Maxim', cat: 'action', note: 'Thriller horor sci-fi tentang parasit misterius.', img: 'https://cdn.myanimelist.net/images/anime/3/73178.jpg'},
+      {title: 'Kimi ni Todoke', cat: 'romance', note: 'Romansa manis antara gadis pemalu dan cowok populer.', img: 'https://cdn.myanimelist.net/images/anime/3/75204.jpg'},
+      {title: 'Charlotte', cat: 'romance', note: 'Remaja dengan kekuatan spesial + drama emosional.', img: 'https://cdn.myanimelist.net/images/anime/12/74683.jpg'},
+      {title: 'Spice and Wolf', cat: 'romance', note: 'Petualangan pedagang dan dewi serigala yang bijak.', img: 'https://cdn.myanimelist.net/images/anime/5/19570.jpg'},
+      {title: 'Hyouka', cat: 'psych', note: 'Misteri ringan dengan nuansa slice of life.', img: 'https://cdn.myanimelist.net/images/anime/13/50521.jpg'},
+      {title: 'Toriko', cat: 'action', note: 'Petualangan kuliner penuh aksi dan monster unik.', img: 'https://cdn.myanimelist.net/images/anime/2/29759.jpg'},
+      {title: 'Baccano!', cat: 'action', note: 'Aksi cepat penuh karakter eksentrik di era 1930-an.', img: 'https://cdn.myanimelist.net/images/anime/4/19644.jpg'},
+      {title: 'Arakawa Under the Bridge', cat: 'comedy', note: 'Kehidupan absurd di bawah jembatan bersama orang-orang unik.', img: 'https://cdn.myanimelist.net/images/anime/11/75274.jpg'},
+      {title: 'Terror in Resonance (Zankyou no Terror)', cat: 'psych', note: 'Thriller misteri dengan dua remaja jenius sebagai teroris.', img: 'https://cdn.myanimelist.net/images/anime/4/64447.jpg'},
+      {title: 'Drifters', cat: 'action', note: 'Pahlawan sejarah dilempar ke dunia fantasi untuk berperang.', img: 'https://cdn.myanimelist.net/images/anime/13/82013.jpg'},
+      {title: 'The World God Only Knows', cat: 'comedy', note: 'Gamer dating sim harus menaklukkan hati cewek di dunia nyata.', img: 'https://cdn.myanimelist.net/images/anime/3/27807.jpg'},
+      {title: 'Yuri!!! on Ice', cat: 'romance', note: 'Drama olahraga figure skating dengan romansa emosional.', img: 'https://cdn.myanimelist.net/images/anime/4/82155.jpg'},
+      {title: 'Beastars', cat: 'psych', note: 'Drama sosial di dunia hewan antropomorfik.', img: 'https://cdn.myanimelist.net/images/anime/1530/103029.jpg'},
+      {title: 'Noragami', cat: 'action', note: 'Dewa kecil berjuang mencari pengikut sambil membasmi roh jahat.', img: 'https://cdn.myanimelist.net/images/anime/4/77823.jpg'},
+      {title: 'Nana', cat: 'romance', note: 'Kisah dua wanita bernama Nana, penuh cinta dan drama.', img: 'https://cdn.myanimelist.net/images/anime/5/17645.jpg'},
+      {title: 'Kekkai Sensen (Blood Blockade Battlefront)', cat: 'action', note: 'Pertarungan supernatural di kota penuh makhluk misterius.', img: 'https://cdn.myanimelist.net/images/anime/8/74072.jpg'},
+      {title: 'School Rumble', cat: 'comedy', note: 'Kisah cinta segitiga yang kocak dan salah paham terus-menerus.', img: 'https://cdn.myanimelist.net/images/anime/8/24644.jpg'},
+      {title: 'A Silent Voice (Koe no Katachi)', cat: 'romance', note: 'Drama emosional tentang penebusan dan penerimaan.', img: 'https://cdn.myanimelist.net/images/anime/1122/96435.jpg'},
+      {title: 'Zombieland Saga', cat: 'comedy', note: 'Grup idola unik yang terdiri dari zombie.', img: 'https://cdn.myanimelist.net/images/anime/1768/113943.jpg'},
+      {title: 'Elfen Lied', cat: 'action', note: 'Gabungan horor, drama, dan kekuatan mematikan.', img: 'https://cdn.myanimelist.net/images/anime/10/18793.jpg'},
+      {title: 'Paprika', cat: 'psych', note: 'Film sci-fi psikologis tentang mimpi dan kenyataan.', img: 'https://cdn.myanimelist.net/images/anime/5/59407.jpg'},
+      {title: 'Ouran High School Host Club', cat: 'comedy', note: 'Komedi romantis di klub host sekolah elit.', img: 'https://cdn.myanimelist.net/images/anime/13/75135.jpg'},
+      {title: 'Hanayamata', cat: 'romance', note: 'Gadis-gadis SMA membentuk klub tari yosakoi.', img: 'https://cdn.myanimelist.net/images/anime/9/64225.jpg'},
+      {title: 'Sakamoto Days', cat: 'action', note: 'Mantan pembunuh bayaran jadi bapak rumahan & lincah melindungi keluarga.', img: 'https://cdn.myanimelist.net/images/anime/…'}, // Jan 2025 1
+      {title: 'Solo Leveling Season 2', cat: 'action', note: 'Sung Jinwoo kembali sebagai Shadow Monarch, pertarungan lebih intens.', img: 'https://cdn.myanimelist.net/images/anime/…'}, // Jan 2025 2
+      {title: 'Dandadan Season 2', cat: 'action', note: 'Arc Evil Eye: horror, komedi, dan romance kocak & kreatif.', img: 'https://cdn.myanimelist.net/images/anime/…'}, // Jul 2025 3
+      {title: 'Gachiakuta', cat: 'action', note: 'Kota terapung & abis monster di bawah: gelap, stylish, intense.', img: 'https://cdn.myanimelist.net/images/anime/…'}, // Jul 2025 4
+      {title: 'The Beginning After the End', cat: 'isekai', note: 'Raja bereinkarnasi, jalan sihir & petualangan epik.', img: 'https://cdn.myanimelist.net/images/anime/…'}, // Apr 2025 5
+      {title: 'Devil May Cry (2025)', cat: 'action', note: 'Dante berburu iblis dalam urban fantasy Netflix.', img: 'https://cdn.myanimelist.net/images/anime/…'}, // Apr 2025 6
+      {title: 'The Shy Hero and the Assassin Princesses', cat: 'comedy', note: 'Hero pemalu & pengawal princesss… yang memplot membunuhnya!', img: 'https://cdn.myanimelist.net/images/anime/…'}, // Jul 2025 7
+      {title: 'Momentary Lily', cat: 'action', note: 'Gadis dan teman-teman bertahan melawan robotinvasor sambil masak.', img: 'https://cdn.myanimelist.net/images/anime/…'}, // Jan 2025 8
+      {title: 'Yaiba (2025 Remake)', cat: 'action', note: 'Remake klasik shin-samurai Yaiba, full petualangan & pedang iblis.', img: 'https://cdn.myanimelist.net/images/anime/…'}, // Apr 2025 9
+      {title: 'Chainsaw Man: Reze Arc (Movie)', cat: 'action', note: 'Film lanjutkan kisah Reze arc dari Chainsaw Man.', img: 'https://cdn.myanimelist.net/images/anime/…'}, // Sep 2025 10
+      {title: 'CITY the Animation', cat: 'psych', note: 'Debut nonsekuel Kyoto Animation setelah bertahun-tahun.', img: 'https://cdn.myanimelist.net/images/anime/…'}, // Jul 2025 11
+{title: 'Wind Breaker', cat: 'action', note: 'Pertarungan geng sekolah penuh gaya dan persahabatan.', img: 'https://cdn.myanimelist.net/images/anime/1065/142366.jpg'},
+{title: 'Bocchi the Rock! Movie', cat: 'music', note: 'Kisah Bocchi dan band Kessoku di layar lebar.', img: 'https://cdn.myanimelist.net/images/anime/1681/142690.jpg'},
+{title: 'Tower of God Season 2', cat: 'fantasy', note: 'Pendakian menara berlanjut dengan misteri dan pengkhianatan.', img: 'https://cdn.myanimelist.net/images/anime/1173/142067.jpg'},
+{title: 'Jujutsu Kaisen Season 3', cat: 'action', note: 'Arc Culling Game dimulai dengan pertarungan besar.', img: 'https://cdn.myanimelist.net/images/anime/1345/142581.jpg'},
+{title: 'Classroom of the Elite Season 3', cat: 'psych', note: 'Persaingan siswa elit di sekolah misterius makin memanas.', img: 'https://cdn.myanimelist.net/images/anime/1999/142114.jpg'},
+{title: 'Black Clover: Mahou Tei no Ken', cat: 'fantasy', note: 'Film aksi sihir dengan fokus pada Julius dan kerajaan Clover.', img: 'https://cdn.myanimelist.net/images/anime/1620/142525.jpg'},
+{title: 'SPY×FAMILY Code: White', cat: 'comedy', note: 'Film keluarga Forger penuh aksi dan kehangatan.', img: 'https://cdn.myanimelist.net/images/anime/1159/142088.jpg'},
+{title: 'Ragna Crimson', cat: 'fantasy', note: 'Pertarungan melawan naga demi masa depan umat manusia.', img: 'https://cdn.myanimelist.net/images/anime/1040/142239.jpg'},
+{title: 'MF Ghost', cat: 'sports', note: 'Balapan mobil masa depan dari pembuat Initial D.', img: 'https://cdn.myanimelist.net/images/anime/1931/142414.jpg'},
+{title: 'Tsukimichi: Moonlit Fantasy Season 2', cat: 'fantasy', note: 'Petualangan Makoto Misumi di dunia baru berlanjut.', img: 'https://cdn.myanimelist.net/images/anime/1334/142009.jpg'},
+{title: 'Mushishi', cat: 'psych', note: 'Cerita mistis dengan suasana tenang dan filosofis.', img: 'https://cdn.myanimelist.net/images/anime/10/75195.jpg'},
+{title: 'K-On!', cat: 'comedy', note: 'Slice of life dan musik dari klub musik ringan SMA.', img: 'https://cdn.myanimelist.net/images/anime/3/79588.jpg'},
+{title: 'Vivy: Fluorite Eye’s Song', cat: 'action', note: 'Sci-fi + musik + drama emosional.', img: 'https://cdn.myanimelist.net/images/anime/1420/117507.jpg'},
+{title: 'Angel Beats!', cat: 'romance', note: 'Campuran komedi, aksi, dan drama emosional di dunia afterlife.', img: 'https://cdn.myanimelist.net/images/anime/7/73284.jpg'},
+{title: 'The Garden of Words', cat: 'romance', note: 'Romantis singkat tapi visualnya luar biasa.', img: 'https://cdn.myanimelist.net/images/anime/11/58441.jpg'},
+{title: 'Made in Abyss', cat: 'action', note: 'Petualangan fantasi yang indah tapi kelam.', img: 'https://cdn.myanimelist.net/images/anime/8/63349.jpg'},
+{title: 'March Comes in Like a Lion', cat: 'psych', note: 'Drama emosional + shogi.', img: 'https://cdn.myanimelist.net/images/anime/3/73271.jpg'},
+{title: 'Planetes', cat: 'psych', note: 'Drama realistis tentang kehidupan pekerja di luar angkasa.', img: 'https://cdn.myanimelist.net/images/anime/12/75639.jpg'},
+{title: 'The Ancient Magus’ Bride', cat: 'romance', note: 'Fantasy romantis dengan sentuhan gelap.', img: 'https://cdn.myanimelist.net/images/anime/12/73319.jpg'},
+{title: 'Great Teacher Onizuka (GTO)', cat: 'comedy', note: 'Komedinya kocak, pesannya dalam.', img: 'https://cdn.myanimelist.net/images/anime/10/11344.jpg'},
+{title: 'Wonder Egg Priority', cat: 'psych', note: 'Drama psikologis dengan tema mimpi dan trauma remaja.', img: 'https://cdn.myanimelist.net/images/anime/1679/111684.jpg'},
+{title: 'Keep Your Hands Off Eizouken!', cat: 'comedy', note: 'Tiga siswi membuat anime dengan imajinasi liar.', img: 'https://cdn.myanimelist.net/images/anime/1398/111530.jpg'},
+{title: 'Odd Taxi', cat: 'psych', note: 'Mystery thriller dengan karakter antropomorfik di kota besar.', img: 'https://cdn.myanimelist.net/images/anime/1211/111447.jpg'},
+{title: 'Fena: Pirate Princess', cat: 'action', note: 'Petualangan bajak laut dengan visual epik dan cerita penuh aksi.', img: 'https://cdn.myanimelist.net/images/anime/1563/114169.jpg'},
+{title: 'Carole & Tuesday', cat: 'romance', note: 'Dua gadis muda berjuang di dunia musik futuristik.', img: 'https://cdn.myanimelist.net/images/anime/1290/100702.jpg'},
+{title: 'Sonny Boy', cat: 'psych', note: 'Kelompok remaja dengan kekuatan misterius terjebak di dimensi lain.', img: 'https://cdn.myanimelist.net/images/anime/1710/109549.jpg'},
+{title: 'Wonder Egg Priority', cat: 'psych', note: 'Mimpi dan trauma di dunia remaja.', img: 'https://cdn.myanimelist.net/images/anime/1679/111684.jpg'},
+{title: 'Keep Your Hands Off Eizouken!', cat: 'comedy', note: 'Tiga siswi membuat anime dengan imajinasi liar.', img: 'https://cdn.myanimelist.net/images/anime/1398/111530.jpg'},
+{title: 'Mob Psycho 100', cat: 'action', note: 'Remaja dengan kekuatan psikis menghadapi kehidupan dan musuh.', img: 'https://cdn.myanimelist.net/images/anime/11/76049.jpg'},
+{title: 'Erased (Boku dake ga Inai Machi)', cat: 'psych', note: 'Thriller misteri + perjalanan waktu.', img: 'https://cdn.myanimelist.net/images/anime/1/73245.jpg'},
+{title: 'The Duke of Death and His Maid', cat: 'romance', note: 'Romansa gelap tentang kutukan dan cinta.', img: 'https://cdn.myanimelist.net/images/anime/1407/115212.jpg'},
+{title: 'Ranking of Kings', cat: 'action', note: 'Petualangan kerajaan dengan karakter utama yang unik dan inspiratif.', img: 'https://cdn.myanimelist.net/images/anime/1989/113898.jpg'},
+{title: 'Wonder Egg Priority', cat: 'psych', note: 'Remaja menghadapi trauma dan mimpi surreal.', img: 'https://cdn.myanimelist.net/images/anime/1679/111684.jpg'},
+{title: 'Mushoku Tensei: Jobless Reincarnation', cat: 'isekai', note: 'Reinkarnasi dengan kehidupan penuh petualangan dan sihir.', img: 'https://cdn.myanimelist.net/images/anime/1749/111390.jpg'},
+{title: 'Odd Taxi', cat: 'psych', note: 'Mystery thriller dengan karakter antropomorfik di kota besar.', img: 'https://cdn.myanimelist.net/images/anime/1211/111447.jpg'},
+{title: 'Vivy: Fluorite Eye’s Song', cat: 'action', note: 'Sci-fi, musik, dan drama emosional.', img: 'https://cdn.myanimelist.net/images/anime/1777/112439.jpg'},
+{title: 'Blue Period', cat: 'psych', note: 'Drama slice of life tentang seni dan pencarian jati diri.', img: 'https://cdn.myanimelist.net/images/anime/1359/111251.jpg'},
+{title: 'Sonny Boy', cat: 'psych', note: 'Kelompok remaja dengan kekuatan misterius terjebak di dimensi lain.', img: 'https://cdn.myanimelist.net/images/anime/1710/109549.jpg'},
+{title: 'Somali and the Forest Spirit', cat: 'romance', note: 'Perjalanan emosional antara manusia dan makhluk hutan.', img: 'https://cdn.myanimelist.net/images/anime/1399/110303.jpg'},
+{title: 'Komi Can’t Communicate', cat: 'comedy', note: 'Kisah lucu dan manis tentang gadis pemalu yang ingin punya teman.', img: 'https://cdn.myanimelist.net/images/anime/1793/113917.jpg'}
     ];
 
     const grid = document.getElementById('grid');
