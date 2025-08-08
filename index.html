@@ -162,7 +162,7 @@
 <body>
   <div class="wrap">
     <h1>Rekomendasi Anime — Simpel</h1>
-    <p class="lead">Klik kategori untuk memfilter. Klik kartu untuk info singkat.</p><div class="controls" id="controls">
+    <p class="lead">Klik kategori untuk memfilter. Klik kartu untuk info singkat. tekan lama gambar lalu klik pratinjau untuk melihat gambar.</p><div class="controls" id="controls">
   <button class="btn active" data-cat="all">Semua</button>
   <button class="btn" data-cat="romance">Romantis</button>
   <button class="btn" data-cat="action">Aksi</button>
@@ -177,7 +177,7 @@
 
   </div>  <script>
     const data = [
-      {title: 'Your Life in April', cat: 'romance', note: 'Romantis & sedih — cinta + musik.', img: 'https://images.app.goo.gl/T7tHqLYX8f4UQTXz9.jpg'},
+      {title: 'Your Life in April', cat: 'romance', note: 'Romantis & sedih — cinta + musik.', img: 'https://images.app.goo.gl/T7tHqLYX8f4UQTXz9'},
       {title: 'Clannad: After Story', cat: 'romance', note: 'Drama keluarga, mengharukan.', img: 'https://images.app.goo.gl/DqwmjLZLieEgN47m7'},
       {title: 'Toradora!', cat: 'romance', note: 'Romansa remaja penuh tawa & haru.', img: 'https://images.app.goo.gl/Bfb7FKGZsFUwpNbE7'},
       {title: 'Attack on Titan', cat: 'action', note: 'Aksi intens melawan raksasa.', img: 'https://images.app.goo.gl/c4mYAGtnRsh8oDbF8'},
@@ -187,26 +187,25 @@
       {title: 'Steins;Gate', cat: 'psych', note: 'Sci‑fi & perjalanan waktu.', img: 'https://images.app.goo.gl/cV9VFxF82rfFvjd87'},
       {title: 'Monster', cat: 'psych', note: 'Drama kriminal & psikologis.', img: 'https://images.app.goo.gl/KVJBK6VqzYv2H5HE9'},
       {title: 'KonoSuba', cat: 'comedy', note: 'Komedi isekai absurd.', img: 'https://images.app.goo.gl/EmAJPx3hFe6abREE7'},
-      {title: 'Gintama', cat: 'comedy', note: 'Parodi anime & aksi kocak.', img: 'https://i.imgur.com/0Bo2nVJ.jpg'},
-      {title: 'Nichijou', cat: 'comedy', note: 'Humor absurd kehidupan sehari‑hari.', img: 'https://i.imgur.com/wJKwB6E.jpg'},
-      {title: 'Re:Zero', cat: 'isekai', note: 'Isekai gelap — hidup ulang setelah mati.', img: 'https://i.imgur.com/mOKlXfG.jpg'},
-      {title: 'That Time I Got Reincarnated as a Slime', cat: 'isekai', note: 'Isekai ringan & seru.', img: 'https://i.imgur.com/ctXvFDE.jpg'},
-      {title: 'No Game No Life', cat: 'isekai', note: 'Dunia game penuh strategi.', img: 'https://i.imgur.com/6V5sbTE.jpg'},
-      {title: 'Your Lie in April', cat: 'romance', note: 'Romantis & sedih — cinta + musik.', img: 'https://i.imgur.com/0y8Ftya.jpg'},
-      {title: 'Fruits Basket', cat: 'romance', note: 'Kehangatan keluarga & romansa.', img: 'https://i.imgur.com/UPbqwaZ.jpg'},
-      {title: 'Anohana: The Flower We Saw That Day', cat: 'romance', note: 'Drama pertemanan & kehilangan.', img: 'https://i.imgur.com/Tw8QwWg.jpg'},
-      {title: 'Fullmetal Alchemist: Brotherhood', cat: 'action', note: 'Petualangan epik dua bersaudara.', img: 'https://i.imgur.com/n0h1Utn.jpg'},
-      {title: 'Black Clover', cat: 'action', note: 'Sihir, pertarungan, dan persahabatan.', img: 'https://i.imgur.com/YlV6b4Z.jpg'},
-      {title: 'My Hero Academia', cat: 'action', note: 'Sekolah pahlawan super.', img: 'https://i.imgur.com/EMNfZmA.jpg'},
-      {title: 'Psycho-Pass', cat: 'psych', note: 'Masa depan dengan sistem penilai kriminal.', img: 'https://i.imgur.com/IHkFymH.jpg'},
-      {title: 'Paranoia Agent', cat: 'psych', note: 'Misteri psikologis surreal.', img: 'https://i.imgur.com/LgDN1rC.jpg'},
-      {title: 'Texhnolyze', cat: 'psych', note: 'Cyberpunk gelap dan filosofis.', img: 'https://i.imgur.com/FfSniNh.jpg'},
-      {title: 'Saiki Kusuo no Psi-nan', cat: 'comedy', note: 'Komedi karakter dengan kekuatan super.', img: 'https://i.imgur.com/JItY8Lf.jpg'},
-      {title: 'Daily Lives of High School Boys', cat: 'comedy', note: 'Kehidupan kocak remaja sekolah.', img: 'https://i.imgur.com/ZmLQYq6.jpg'},
-      {title: 'Asobi Asobase', cat: 'comedy', note: 'Kelompok siswi dengan humor absurd.', img: 'https://i.imgur.com/nk16L7n.jpg'},
-      {title: 'The Rising of the Shield Hero', cat: 'isekai', note: 'Pahlawan tameng di dunia fantasi.', img: 'https://i.imgur.com/0M3R5gP.jpg'},
-      {title: 'Cautious Hero', cat: 'isekai', note: 'Pahlawan super hati-hati.', img: 'https://i.imgur.com/PGN2cWZ.jpg'},
-      {title: 'Grimgar: Ashes and Illusions', cat: 'isekai', note: 'Fantasi realistis penuh perjuangan.', img: 'https://i.imgur.com/xJ3p17T.jpg'}
+      {title: 'Gintama', cat: 'comedy', note: 'Parodi anime & aksi kocak.', img: 'https://images.app.goo.gl/Tqj4WypPNJET83ue9'},
+      {title: 'Nichijou', cat: 'comedy', note: 'Humor absurd kehidupan sehari‑hari.', img: 'https://images.app.goo.gl/X8cJinx7wr5vHDQx6'},
+      {title: 'Re:Zero', cat: 'isekai', note: 'Isekai gelap — hidup ulang setelah mati.', img: 'https://images.app.goo.gl/ky6u6Sa5JE3eeVnz8'},
+      {title: 'That Time I Got Reincarnated as a Slime', cat: 'isekai', note: 'Isekai ringan & seru.', img: 'https://images.app.goo.gl/4rG2YWZbuvskEGTQ7'},
+      {title: 'No Game No Life', cat: 'isekai', note: 'Dunia game penuh strategi.', img: 'https://images.app.goo.gl/6FTdC4Wn1tPxATEWA'},
+      {title: 'Fruits Basket', cat: 'romance', note: 'Kehangatan keluarga & romansa.', img: 'https://images.app.goo.gl/74HLfaEjipMdR3zZA'},
+      {title: 'Anohana: The Flower We Saw That Day', cat: 'romance', note: 'Drama pertemanan & kehilangan.', img: 'https://images.app.goo.gl/ktwLCfqz2DYAxQSM8'},
+      {title: 'Fullmetal Alchemist: Brotherhood', cat: 'action', note: 'Petualangan epik dua bersaudara.', img: 'https://images.app.goo.gl/tWikdbVyzcyyndr29'},
+      {title: 'Black Clover', cat: 'action', note: 'Sihir, pertarungan, dan persahabatan.', img: 'https://images.app.goo.gl/W3CpAaW1fXP54sF98'},
+      {title: 'My Hero Academia', cat: 'action', note: 'Sekolah pahlawan super.', img: 'https://images.app.goo.gl/KMWxDubRZqjVCWK56'},
+      {title: 'Psycho-Pass', cat: 'psych', note: 'Masa depan dengan sistem penilai kriminal.', img: 'https://images.app.goo.gl/mPgjTkum7cSvFJ9dA'},
+      {title: 'Paranoia Agent', cat: 'psych', note: 'Misteri psikologis surreal.', img: 'https://images.app.goo.gl/qV9NJDcoPhBnKeWj9'},
+      {title: 'Texhnolyze', cat: 'psych', note: 'Cyberpunk gelap dan filosofis.', img: 'https://images.app.goo.gl/VFH8eiJyBb9331xJ8'},
+      {title: 'Saiki Kusuo no Psi-nan', cat: 'comedy', note: 'Komedi karakter dengan kekuatan super.', img: 'https://images.app.goo.gl/rx6n4e5Lbicm6gZaA'},
+      {title: 'Daily Lives of High School Boys', cat: 'comedy', note: 'Kehidupan kocak remaja sekolah.', img: 'https://images.app.goo.gl/83hJ5ia58qGC3igNA'},
+      {title: 'Asobi Asobase', cat: 'comedy', note: 'Kelompok siswi dengan humor absurd.', img: 'https://images.app.goo.gl/uGMReXsLa8YX7Zh57'},
+      {title: 'The Rising of the Shield Hero', cat: 'isekai', note: 'Pahlawan tameng di dunia fantasi.', img: 'https://images.app.goo.gl/KZGUDATPwCoR99Qy8'},
+      {title: 'Cautious Hero', cat: 'isekai', note: 'Pahlawan super hati-hati.', img: 'https://images.app.goo.gl/XgJnvMeaAgctdLvp7'},
+      {title: 'Grimgar: Ashes and Illusions', cat: 'isekai', note: 'Fantasi realistis penuh perjuangan.', img: 'https://images.app.goo.gl/NLFPnfqqG6wxhYc47'}
     ];
 
     const grid = document.getElementById('grid');
