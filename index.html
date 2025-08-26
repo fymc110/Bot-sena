@@ -30,14 +30,14 @@
     }
 
     header .brand {
-      grid-column: 2;          /* Pindah ke kolom tengah */
-      text-align: center;      /* Teks rata tengah */
-      font-size: 1.6rem;       /* Judul lebih besar */
+      grid-column: 2;          
+      text-align: center;      
+      font-size: 1.6rem;       
       font-weight: 700;
     }
 
     header .brand span {
-      display: block;          /* Muncul di bawah judul */
+      display: block;          
       font-weight: 400;
       font-size: 0.9rem;
       color: #b0bec5;
@@ -139,6 +139,24 @@
       margin: 6px 0;
     }
 
+    /* Tambahan tombol dalam card */
+    .card .btn {
+      display: inline-block;
+      margin-top: 15px;
+      background: #1a4db3;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .card .btn:hover {
+      background: #0f3a91;
+      transform: scale(1.05);
+    }
+
     /* Responsive Mobile */
     @media (max-width: 768px) {
       header {
@@ -209,9 +227,14 @@
     <div class="card">
       <h3>INFORMASI SERVER</h3>
       <ul>
-        <li>Total Member: 300+</li>
-        <li>Tema: Survival Fantasy → Server Yang Berisi Tentang Dunia Fantasy, Seperti, Economy, Gacha, Mob Fantasy, Senjata Fantasy, Dan Kekuatan Magis</li>
+        <li>Cara Bermain</li>
+        <li>Tema</li>
+        <li>Senjata & Skill</li>
+        <li>Material</li>
+        <li>Keuangan</li>
       </ul>
+      <!-- Tombol ke halaman kedua -->
+      <a href="halaman2.html" class="btn">Baca Selengkapnya</a>
     </div>
     <div class="card">
       <h3>FITUR</h3>
