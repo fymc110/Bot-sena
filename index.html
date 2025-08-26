@@ -1,182 +1,243 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Server Minecraft — Open Member</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VanguardSMP — Official Stream</title>
   <style>
-    :root{
-      --primary:#1e73ff;
-      --accent:#ffc107;
-      --ink:#0e0e0f;
-      --muted:#6b7280;
-      --bg:#ffffff;
+    /* Reset dasar */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-      color:var(--ink);
-      background:var(--bg);
-      line-height:1.55;
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f6fa;
+      color: #333;
+      line-height: 1.6;
     }
-    .topbar{
-      display:flex;
-      align-items:center;
-      gap:.9rem;
-      padding:.75rem 1rem;
-      border-bottom:1px solid #e5e7eb;
+
+    /* Header */
+    header {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+      padding: 15px 30px;
+      background: #0d1b2a;
+      color: #fff;
     }
-    .logo{
-      display:flex;align-items:center;gap:.6rem;
-      padding:.4rem .6rem;
-      background:#0b0f19;color:#e6f1ff;border-radius:.5rem;
-      font-family:Montserrat,Inter,sans-serif;font-weight:800;
+
+    header .brand {
+      grid-column: 2;          /* Pindah ke kolom tengah */
+      text-align: center;      /* Teks rata tengah */
+      font-size: 1.6rem;       /* Judul lebih besar */
+      font-weight: 700;
     }
-    .logo-badge{font-size:.7rem;opacity:.85}
-    .bar-title{font-weight:700}
-    .spacer{flex:1}
-    .hero{
-      position:relative;
-      overflow:hidden;
-      padding:2.5rem 1rem 1rem;
-      isolation:isolate;
+
+    header .brand span {
+      display: block;          /* Muncul di bawah judul */
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: #b0bec5;
     }
-    .hero-wrap{
-      max-width:1100px;margin:0 auto;display:grid;gap:1.5rem;
-      grid-template-columns:1.2fr .9fr;
+
+    header .logo-kanan {
+      text-align: right;
     }
-    @media (max-width:980px){ .hero-wrap{grid-template-columns:1fr} }
-    .kicker{
-      color:var(--muted);font-weight:700;letter-spacing:.08em;
-      text-transform:uppercase;
-      font-size:.85rem;margin-bottom:.25rem;
+
+    header .logo-kanan img {
+      height: 55px;
+      width: 55px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
-    .big-title{
-      font-family:Montserrat,Inter,sans-serif;
-      font-size:clamp(2.6rem,6vw,4.5rem);
-      line-height:1.02;margin:.1rem 0;color:var(--primary);
-      text-transform:uppercase;
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(180deg, #2c3e50, #34495e);
+      color: white;
     }
-    .subhead{
-      font-size:clamp(1.2rem,2.8vw,1.6rem);
-      font-weight:800;text-transform:uppercase;margin:.3rem 0 1rem;
+
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
     }
-    .blurb{max-width:46ch;color:#1f2937;font-weight:500}
-    .info{
-      max-width:1100px;margin:1rem auto 0;display:grid;gap:2rem;
-      grid-template-columns:1fr 1fr;
-      padding:0 1rem 2rem;
+
+    .hero p {
+      font-size: 1rem;
+      margin-bottom: 20px;
     }
-    @media (max-width:900px){ .info{grid-template-columns:1fr} }
-    .card{
-      background:#fff;border:1px solid #e5e7eb;border-radius:1rem;padding:1.25rem 1.25rem 1rem;
-      box-shadow:0 10px 25px rgba(0,0,0,.04);
+
+    .hero .btn {
+      display: inline-block;
+      background: #1a4db3;
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease-in-out;
     }
-    .card h3{
-      margin:.25rem 0 .75rem;font-size:1rem;letter-spacing:.08em;text-transform:uppercase;color:#2563eb
+
+    .hero .btn:hover {
+      background: #0f3a91;
+      transform: scale(1.05);
+      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
     }
-    .kv{display:grid;grid-template-columns:auto 1fr;gap:.25rem 1rem;font-weight:600}
-    .kv span.muted{color:var(--muted);font-weight:600}
-    .list{margin:.2rem 0 0.6rem;padding-left:1.1rem}
-    .list li{margin:.25rem 0}
-    .cta{
-      margin-top:2rem;background:
-        linear-gradient(90deg,#1252ff 0 70%, #b67b00 70% 100%);
-      color:#fff;
+
+    /* Section Info */
+    .info-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 60px 20px;
+      background: #fff;
     }
-    @media (max-width:860px){ .cta{background:#1252ff} }
-    .cta-inner{
-      max-width:1100px;margin:0 auto;display:grid;align-items:center;
-      grid-template-columns:1.2fr .9fr;gap:1rem;padding:1rem;
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      width: 300px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
     }
-    @media (max-width:860px){ .cta-inner{grid-template-columns:1fr} }
-    .cta h4{margin:.15rem 0 .35rem;font-size:1.25rem}
-    .cta .btn{
-      display:inline-block;background:#0b0f19;color:#fff;text-decoration:none;
-      padding:.85rem 1.1rem;border-radius:.9rem;font-weight:800;text-transform:uppercase;
+
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.6s ease-in-out;
     }
-    .cta .link{
-      display:block;margin-top:.5rem;color:#111827;background:#ffd873;border-radius:.65rem;
-      padding:.6rem .75rem;font-weight:700;text-decoration:none;
-      word-break:break-all;
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     }
-    .panel-stack{display:grid;gap:1rem;grid-template-columns:1fr 1fr;}
-    @media (max-width:900px){ .panel-stack{grid-template-columns:1fr} }
-    .panel{
-      height:220px;border-radius:1rem;position:relative;overflow:hidden;
-      background:#eef2ff;border:1px solid #e5e7eb;
+
+    .card h3 {
+      margin-bottom: 15px;
+      color: #1a237e;
     }
-    .qr{
-      width:112px;height:112px;border-radius:.5rem;background:
-        repeating-linear-gradient(0deg,#111 0 6px,#fff 6px 12px),
-        repeating-linear-gradient(90deg,#111 0 6px,#fff 6px 12px);
-      border:4px solid #0b0f19;
+
+    .card ul {
+      text-align: left;
+      margin: 0 auto;
+      display: inline-block;
+    }
+
+    .card ul li {
+      margin: 6px 0;
+    }
+
+    /* Responsive Mobile */
+    @media (max-width: 768px) {
+      header {
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 10px 15px;
+      }
+
+      header .brand {
+        font-size: 1.2rem;
+      }
+
+      header .brand span {
+        font-size: 0.8rem;
+      }
+
+      header .logo-kanan img {
+        height: 45px;
+        width: 45px;
+      }
+
+      .hero {
+        padding: 60px 15px;
+      }
+
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+
+      .hero p {
+        font-size: 0.9rem;
+      }
+
+      .card {
+        width: 90%;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top bar -->
-  <div class="topbar">
-    <div class="logo">
-      <span>VanguardSMP</span>
-      <span class="logo-badge">official stream</span>
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      VanguardSMP
+      <span>Official Stream</span>
     </div>
-    <div class="bar-title">Server Minecraft Open Member</div>
-    <div class="spacer"></div>
-  </div>
+    <div class="logo-kanan">
+      <img src="fanglogo.jpg" alt="Logo">
+    </div>
+  </header>
 
-  <!-- Hero -->
+  <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-wrap">
-      <div>
-        <div class="kicker">Open Member Season Terbaru</div>
-        <h1 class="big-title">OPEN MEMBER</h1>
-        <div class="subhead">Server Minecraft Open Member</div>
-        <p class="blurb">
-          Telah memiliki lebih dari <strong>5</strong> grup cabang dan memiliki total
-          <strong>300+ member</strong> di server.
-          
-          <!-- Info blocks -->
-  <section class="info">
-    <article class="card">
-      <h3>Versi Minecraft</h3>
-      <div class="kv">
-        <span class="muted">JAVA</span><span>: 1.20.1</span>
-        <span class="muted">BEDROCK</span>
-        <span>: 1.20.32 / 1.20.40 / 1.20.50 dan masih banyak lagi</span>
-      </div>
-    </article>
-    <article class="card">
-      <h3>Fitur</h3>
-      <ul class="list">
-        <li>Claim land, economy, clan, gacha, lobby</li>
-        <li>Teleport antar pemain, RTP, ball top</li>
-        <li>Plugin fantasy, quest, boss, rewind, rank</li>
-        <li>Dan masih banyak lagi…</li>
-      </ul>
-    </article>
+    <h1>Server Minecraft Open Member</h1>
+    <p>Telah memiliki lebih dari 5 grup cabang dan memiliki total <b>300+ member</b> di server.</p>
+    <a href="https://chat.whatsapp.com/LVOkRs5t4bK74g9vtjYAhU" class="btn">JOIN SEKARANG</a>
   </section>
 
-  <!-- CTA -->
-  <footer class="cta">
-    <div class="cta-inner">
-      <div>
-        <h4>Join sekarang juga, limit member baru-nya cuma 50!!</h4>
-        <a class="link" href="https://chat.whatsapp.com/LVOkRs5t4bK74g9vtjYAhU?mode=ems_copy_t" target="_blank">
-          https://chat.whatsapp.com/Jelm5qwIErq9Pir1dfMw7Q
-        </a>
-      </div>
-      <div
-      <a class="btn" href="https://chat.whatsapp.com/LVOkRs5t4bK74g9vtjYAhU?mode=ems_copy_t" target="_blank">Join Grup</a>
-      </div>
+  <!-- Informasi -->
+  <section class="info-section">
+    <div class="card">
+      <h3>VERSI MINECRAFT</h3>
+      <ul>
+        <li><b>JAVA :</b> 1.20.1</li>
+        <li><b>BEDROCK :</b> 1.20.32 - Versi Terbaru Dari Minecraft</li>
+      </ul>
     </div>
-  </footer>
+    <div class="card">
+      <h3>INFORMASI SERVER</h3>
+      <ul>
+        <li>Total Member: 300+</li>
+        <li>Tema: Survival Fantasy → Server Yang Berisi Tentang Dunia Fantasy, Seperti, Economy, Gacha, Mob Fantasy, Senjata Fantasy, Dan Kekuatan Magis</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>FITUR</h3>
+      <ul>
+        <li>Claim land</li>
+        <li>Economy</li>
+        <li>Clan</li>
+        <li>Gacha</li>
+        <li>Lobby</li>
+      </ul>
+    </div>
+  </section>
+
+  <script>
+    // Efek fade-in saat scroll
+    const cards = document.querySelectorAll('.card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    cards.forEach(card => observer.observe(card));
+  </script>
 
 </body>
 </html>
